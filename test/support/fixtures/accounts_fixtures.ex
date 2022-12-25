@@ -11,10 +11,11 @@ defmodule DoctorSchedule.AccountsFixtures do
     {:ok, user} =
       attrs
       |> Enum.into(%{
-        email: "some email",
+        email: "someemail@email.com",
         first_name: "some first_name",
         last_name: "some last_name",
-        password_hash: "some password_hash",
+        password: "somepassword",
+        password_confirmation: "somepassword",
         role: "some role"
       })
       |> DoctorSchedule.Accounts.Repositories.Account.create_user()

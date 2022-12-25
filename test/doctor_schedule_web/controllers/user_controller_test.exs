@@ -6,17 +6,19 @@ defmodule DoctorScheduleWeb.UserControllerTest do
   alias DoctorSchedule.Accounts.Entities.User
 
   @create_attrs %{
-    email: "some email",
+    email: "someemail@email.com",
     first_name: "some first_name",
     last_name: "some last_name",
-    password_hash: "some password_hash",
+    password: "somepassword",
+    password_confirmation: "somepassword",
     role: "some role"
   }
   @update_attrs %{
-    email: "some updated email",
+    email: "someupdatedemail@email.com",
     first_name: "some updated first_name",
     last_name: "some updated last_name",
-    password_hash: "some updated password_hash",
+    password: "somepassword",
+    password_confirmation: "somepassword",
     role: "some updated role"
   }
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password_hash: nil, role: nil}
@@ -41,10 +43,9 @@ defmodule DoctorScheduleWeb.UserControllerTest do
 
       assert %{
                "id" => ^id,
-               "email" => "some email",
+               "email" => "someemail@email.com",
                "first_name" => "some first_name",
                "last_name" => "some last_name",
-               "password_hash" => "some password_hash",
                "role" => "some role"
              } = json_response(conn, 200)["data"]
     end
@@ -66,10 +67,9 @@ defmodule DoctorScheduleWeb.UserControllerTest do
 
       assert %{
                "id" => ^id,
-               "email" => "some updated email",
+               "email" => "someupdatedemail@email.com",
                "first_name" => "some updated first_name",
                "last_name" => "some updated last_name",
-               "password_hash" => "some updated password_hash",
                "role" => "some updated role"
              } = json_response(conn, 200)["data"]
     end
