@@ -8,7 +8,14 @@ defmodule DoctorSchedule.AccountTest do
 
     import DoctorSchedule.AccountsFixtures
 
-    @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password: nil, password_confirmation: nil, role: nil}
+    @invalid_attrs %{
+      email: nil,
+      first_name: nil,
+      last_name: nil,
+      password: nil,
+      password_confirmation: nil,
+      role: nil
+    }
 
     test "list_users/0 returns all users" do
       user_fixture()
@@ -21,12 +28,14 @@ defmodule DoctorSchedule.AccountTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{email: "someemail@email.com",
-      first_name: "some first_name",
-      last_name: "some last_name",
-      password: "somepassword_hash",
-      password_confirmation: "somepassword_hash",
-      role: "some role"}
+      valid_attrs = %{
+        email: "someemail@email.com",
+        first_name: "some first_name",
+        last_name: "some last_name",
+        password: "somepassword_hash",
+        password_confirmation: "somepassword_hash",
+        role: "some role"
+      }
 
       assert {:ok, %User{} = user} = Account.create_user(valid_attrs)
       assert user.email == "someemail@email.com"
@@ -40,7 +49,14 @@ defmodule DoctorSchedule.AccountTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{email: "someupdatedemail@email.com", first_name: "some updated first_name", last_name: "some updated last_name", password_hash: "some updated password_hash", role: "some updated role"}
+
+      update_attrs = %{
+        email: "someupdatedemail@email.com",
+        first_name: "some updated first_name",
+        last_name: "some updated last_name",
+        password_hash: "some updated password_hash",
+        role: "some updated role"
+      }
 
       assert {:ok, %User{} = user} = Account.update_user(user, update_attrs)
       assert user.email == "someupdatedemail@email.com"
